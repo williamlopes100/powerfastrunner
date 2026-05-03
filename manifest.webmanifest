@@ -1,0 +1,28 @@
+{
+  "name": "Power Fast Runner",
+  "short_name": "PFR",
+  "description": "Treino de força específico para corredores. Aumente sua força em mais de 30% em 8 semanas.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a0a",
+  "theme_color": "#ff6b1a",
+  "categories": ["health", "fitness", "sports", "education"],
+  "icons": [
+    {
+      "src": "/assets/images/logo.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/images/logo.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ]
+}

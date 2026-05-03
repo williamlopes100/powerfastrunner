@@ -1,0 +1,12 @@
+/* TEAM */
+Founder & Instructor: Prof. Ms. Fabiano Peres
+Contact: powerfastrunner [at] gmail.com
+From: Brazil
+
+/* SITE */
+Last update: 2026/05/03
+Language: Portuguese (pt-BR)
+Doctype: HTML5
+Standards: HTML5, CSS3, ES2017+
+Components: Vanilla JS, no framework
+Software: Built and optimized for performance and SEO

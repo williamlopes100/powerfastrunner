@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/0.9">
+  <url>
+    <loc>https://www.powerfastrunner.com.br/</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.powerfastrunner.com.br/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.powerfastrunner.com.br/"/>
+    <image:image>
+      <image:loc>https://www.powerfastrunner.com.br/assets/images/hero-bg.webp</image:loc>
+      <image:title>Power Fast Runner - Treino de Força para Corredores</image:title>
+      <image:caption>Método criado pelo Prof. Ms. Fabiano Peres</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.powerfastrunner.com.br/assets/images/logo.webp</image:loc>
+      <image:title>Power Fast Runner Logo</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.powerfastrunner.com.br/assets/images/fotos5.webp</image:loc>
+      <image:title>Prof. Ms. Fabiano Peres</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.powerfastrunner.com.br/360/</loc>
+    <lastmod>2026-05-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>

@@ -1,0 +1,190 @@
+# ============================================================
+# Power Fast Runner - Apache Configuration
+# Optimized for performance, security and SEO
+# ============================================================
+
+# ----- Default character set -----
+AddDefaultCharset UTF-8
+
+# ----- Default index files -----
+DirectoryIndex index.html index.php
+
+# ----- Disable directory listing -----
+Options -Indexes
+Options +FollowSymLinks
+
+# ----- Custom error pages -----
+ErrorDocument 404 /404.html
+
+# ============================================================
+# REWRITE RULES (HTTPS, www, clean URLs)
+# ============================================================
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Force HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Force www
+    RewriteCond %{HTTP_HOST} !^www\. [NC]
+    RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Remove trailing .html from URLs
+    RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+    RewriteRule ^ /%1 [R=301,L,NE]
+
+    # Internally map clean URLs to .html files
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    RewriteRule ^(.+?)/?$ $1.html [L]
+
+    # Block access to dotfiles (.env, .git, etc.)
+    RewriteRule "(^|/)\." - [F]
+</IfModule>
+
+# ============================================================
+# SECURITY HEADERS
+# ============================================================
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(self)"
+    Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" env=HTTPS
+
+    # Remove server fingerprint
+    Header unset X-Powered-By
+    Header unset Server
+
+    # CORS for fonts and assets
+    <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css|css|js|webp)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>
+
+# ============================================================
+# DENY ACCESS TO SENSITIVE FILES
+# ============================================================
+<FilesMatch "^\.(env|env\..*|gitignore|htaccess|htpasswd)$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "(README\.md|composer\.json|composer\.lock|package\.json|package-lock\.json|yarn\.lock)$">
+    Require all denied
+</FilesMatch>
+
+# Block access to server folder via direct request
+RedirectMatch 403 ^/server(/|$)
+RedirectMatch 403 ^/docs(/|$)
+
+# ============================================================
+# COMPRESSION (Gzip / Brotli)
+# ============================================================
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/atom+xml
+    AddOutputFilterByType DEFLATE application/manifest+json
+    AddOutputFilterByType DEFLATE image/svg+xml
+    AddOutputFilterByType DEFLATE font/ttf
+    AddOutputFilterByType DEFLATE font/otf
+    AddOutputFilterByType DEFLATE font/woff
+    AddOutputFilterByType DEFLATE font/woff2
+    AddOutputFilterByType DEFLATE application/font-woff
+    AddOutputFilterByType DEFLATE application/font-woff2
+</IfModule>
+
+<IfModule mod_brotli.c>
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/css text/xml
+    AddOutputFilterByType BROTLI_COMPRESS application/javascript application/json application/xml
+    AddOutputFilterByType BROTLI_COMPRESS image/svg+xml font/woff font/woff2
+</IfModule>
+
+# ============================================================
+# CACHE / EXPIRES
+# ============================================================
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault                                      "access plus 1 month"
+
+    # HTML
+    ExpiresByType text/html                             "access plus 0 seconds"
+
+    # Data
+    ExpiresByType application/json                      "access plus 0 seconds"
+    ExpiresByType application/xml                       "access plus 0 seconds"
+    ExpiresByType text/xml                              "access plus 0 seconds"
+
+    # Manifest
+    ExpiresByType application/manifest+json             "access plus 1 week"
+    ExpiresByType text/cache-manifest                   "access plus 0 seconds"
+
+    # Favicon
+    ExpiresByType image/x-icon                          "access plus 1 week"
+
+    # CSS / JS (versionable)
+    ExpiresByType text/css                              "access plus 1 year"
+    ExpiresByType application/javascript                "access plus 1 year"
+    ExpiresByType text/javascript                       "access plus 1 year"
+
+    # Media
+    ExpiresByType image/jpeg                            "access plus 1 year"
+    ExpiresByType image/png                             "access plus 1 year"
+    ExpiresByType image/gif                             "access plus 1 year"
+    ExpiresByType image/svg+xml                         "access plus 1 year"
+    ExpiresByType image/webp                            "access plus 1 year"
+    ExpiresByType image/avif                            "access plus 1 year"
+    ExpiresByType video/mp4                             "access plus 1 year"
+    ExpiresByType video/webm                            "access plus 1 year"
+
+    # Fonts
+    ExpiresByType font/ttf                              "access plus 1 year"
+    ExpiresByType font/otf                              "access plus 1 year"
+    ExpiresByType font/woff                             "access plus 1 year"
+    ExpiresByType font/woff2                            "access plus 1 year"
+    ExpiresByType application/font-woff                 "access plus 1 year"
+    ExpiresByType application/font-woff2                "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(css|js|webp|jpg|jpeg|png|gif|svg|ico|woff|woff2|ttf|otf|mp4|webm)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "no-cache, must-revalidate"
+    </FilesMatch>
+    <FilesMatch "\.(xml|json|webmanifest)$">
+        Header set Cache-Control "public, max-age=3600"
+    </FilesMatch>
+</IfModule>
+
+# ============================================================
+# MIME TYPES
+# ============================================================
+<IfModule mod_mime.c>
+    AddType image/webp                       .webp
+    AddType image/avif                       .avif
+    AddType application/manifest+json        .webmanifest
+    AddType text/cache-manifest              .appcache
+    AddType font/woff                        .woff
+    AddType font/woff2                       .woff2
+    AddType application/javascript           .js
+    AddType text/xml                         .xml
+</IfModule>
+
+# ============================================================
+# ETAGS (disable, use Cache-Control instead)
+# ============================================================
+<IfModule mod_headers.c>
+    Header unset ETag
+</IfModule>
+FileETag None

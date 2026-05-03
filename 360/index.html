@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aula Gratuita | Power Fast Runner | Prof. Ms. Fabiano Peres</title>
+  <meta name="description" content="Aula ao vivo gratuita para profissionais que treinam corredores. Avaliação x Treino de Força Específica. 04 de maio às 21h. Por Prof. Ms. Fabiano Peres." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Aula Gratuita — Power Fast Runner" />
+  <meta property="og:description" content="Para profissionais que treinam corredores. 04 de maio · 21h · YouTube." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.powerfastrunner.com.br/360" />
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:ital,wght@0,400;0,700;1,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --ink: #0A0A0A;
+      --ink-2: #141414;
+      --paper: #F5F5F5;
+      --lime: #C8FF3D;
+      --orange: #FF7A00;
+      --silver: #C9CCD1;
+      --muted: #8A8A8A;
+      --border: #262626;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: radial-gradient(ellipse at top, #1a1a1a 0%, #0A0A0A 60%);
+      color: var(--paper);
+      font-family: 'Inter', system-ui, sans-serif;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 460px;
+      background: var(--ink-2);
+      border: 1px solid var(--border);
+      box-shadow: 0 30px 60px -20px rgba(0,0,0,0.8), 0 0 0 1px rgba(200,255,61,0.06);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      border-bottom: 1px solid var(--border);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--silver);
+    }
+    .topbar .left { display: flex; align-items: center; gap: 8px; }
+    .topbar .dot {
+      width: 6px; height: 6px;
+      background: var(--lime);
+      box-shadow: 0 0 8px var(--lime);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .content { padding: 32px 28px; }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: var(--orange);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: 'Oswald', 'Impact', sans-serif;
+      font-weight: 700;
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      font-style: italic;
+    }
+    h1 .line { display: block; }
+    h1 .silver-grad {
+      font-size: 38px;
+      background: linear-gradient(180deg, #FFFFFF 0%, #9A9DA3 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    h1 .lime {
+      font-size: 38px;
+      color: var(--lime);
+      text-shadow: 0 0 24px rgba(200,255,61,0.25);
+    }
+    h1 .small { font-size: 30px; }
+
+    .accent-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 16px 0 20px;
+    }
+    .accent-bar .a { height: 2px; flex: 1; background: var(--lime); }
+    .accent-bar .b { height: 2px; width: 30px; background: var(--orange); }
+
+    .tagline {
+      color: var(--silver);
+      font-size: 13px;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+    }
+    .tagline .hl { color: var(--lime); font-weight: 600; }
+
+    .live-info {
+      background: rgba(255, 122, 0, 0.08);
+      border: 1px solid rgba(255, 122, 0, 0.3);
+      padding: 12px 16px;
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .live-info .label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--orange);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .live-info .value {
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      font-style: italic;
+      font-weight: 700;
+      color: var(--paper);
+      text-transform: uppercase;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    .pillar { text-align: center; }
+    .pillar .square {
+      width: 8px; height: 8px;
+      margin: 0 auto 6px;
+    }
+    .pillar.lime .square { background: var(--lime); box-shadow: 0 0 10px var(--lime); }
+    .pillar.orange .square { background: var(--orange); box-shadow: 0 0 10px var(--orange); }
+    .pillar.silver .square { background: var(--silver); box-shadow: 0 0 10px var(--silver); }
+    .pillar p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--silver);
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .form { margin-top: 28px; }
+    .field { margin-bottom: 20px; }
+    .field-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .field label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--silver);
+    }
+    .field .idx {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: var(--muted);
+    }
+    .field input, .field textarea {
+      width: 100%;
+      padding: 12px;
+      background: var(--ink);
+      border: 1px solid var(--border);
+      color: var(--paper);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      outline: none;
+      transition: all 0.15s ease;
+    }
+    .field input:focus, .field textarea:focus {
+      border-color: var(--lime);
+      box-shadow: 0 0 0 3px rgba(200,255,61,0.1);
+    }
+    .field .err {
+      margin-top: 6px;
+      color: var(--orange);
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      display: none;
+    }
+    .field.has-error .err { display: block; }
+    .field.has-error input,
+    .field.has-error .area-options { border-color: var(--orange); }
+
+    /* ÁREA - radio buttons custom */
+    .area-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .area-option {
+      position: relative;
+      cursor: pointer;
+    }
+    .area-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      margin: 0;
+      padding: 0;
+    }
+    .area-option .area-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 8px;
+      background: var(--ink);
+      border: 1px solid var(--border);
+      color: var(--silver);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: all 0.15s ease;
+      text-align: center;
+      min-height: 48px;
+    }
+    .area-option:hover .area-label {
+      border-color: rgba(200, 255, 61, 0.4);
+      color: var(--paper);
+    }
+    .area-option input[type="radio"]:checked + .area-label {
+      background: rgba(200, 255, 61, 0.1);
+      border-color: var(--lime);
+      color: var(--lime);
+      box-shadow: 0 0 0 3px rgba(200,255,61,0.1);
+    }
+
+    .submit {
+      width: 100%;
+      padding: 16px;
+      margin-top: 8px;
+      background: var(--lime);
+      color: var(--ink);
+      border: none;
+      font-family: 'Oswald', 'Impact', sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-style: italic;
+      cursor: pointer;
+      box-shadow: 0 0 0 1px var(--lime), 0 10px 30px -10px rgba(200,255,61,0.5);
+      transition: transform 0.1s ease;
+    }
+    .submit:hover { transform: translateY(-1px); }
+    .submit:active { transform: translateY(1px); }
+    .submit:disabled { opacity: 0.5; cursor: wait; }
+
+    .lgpd {
+      text-align: center;
+      padding-top: 12px;
+      color: var(--muted);
+      font-size: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.15em;
+    }
+
+    .global-error {
+      color: var(--orange);
+      font-size: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 12px;
+      display: none;
+    }
+    .global-error.show { display: block; }
+
+    .footer-bar {
+      display: flex;
+      height: 4px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-bar .seg-1 { flex: 2; background: var(--lime); }
+    .footer-bar .seg-2 { flex: 1; background: var(--orange); }
+    .footer-bar .seg-3 { flex: 3; }
+
+    .success {
+      padding: 56px 28px;
+      text-align: center;
+      display: none;
+    }
+    .success.show { display: block; }
+    .success .check {
+      width: 72px; height: 72px;
+      background: var(--lime);
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      font-style: italic;
+      box-shadow: 0 0 40px rgba(200,255,61,0.4);
+    }
+    .success h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 34px;
+      font-weight: 700;
+      font-style: italic;
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+    }
+    .success h2 .name { color: var(--lime); }
+    .success p { color: var(--silver); font-size: 13px; line-height: 1.6; margin-top: 16px; }
+
+    .upsell {
+      margin-top: 32px;
+      padding: 20px;
+      background: var(--ink);
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+    .upsell .upsell-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--orange);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .upsell h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      font-style: italic;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .upsell p { font-size: 13px; line-height: 1.5; color: var(--silver); margin: 0 0 16px; }
+    .upsell-btn {
+      display: inline-block;
+      padding: 12px 20px;
+      background: transparent;
+      color: var(--lime);
+      border: 1px solid var(--lime);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+    .upsell-btn:hover {
+      background: var(--lime);
+      color: var(--ink);
+    }
+
+    @media (max-width: 420px) {
+      h1 .silver-grad, h1 .lime { font-size: 32px; }
+      h1 .small { font-size: 26px; }
+      .content { padding: 28px 22px; }
+      .area-options { grid-template-columns: 1fr; }
+    }
+
+    /* ========== MODAL LGPD ========== */
+    .lgpd-trigger {
+      cursor: pointer;
+      transition: color 0.15s ease;
+      text-decoration: underline;
+      text-decoration-color: var(--border);
+      text-underline-offset: 2px;
+    }
+    .lgpd-trigger:hover {
+      color: var(--lime);
+      text-decoration-color: var(--lime);
+    }
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+      animation: fadeIn 0.2s ease;
+    }
+    .modal-overlay.show { display: flex; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .modal {
+      background: var(--ink-2);
+      border: 1px solid var(--border);
+      max-width: 520px;
+      width: 100%;
+      max-height: 85vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 30px 60px -20px rgba(0,0,0,0.9);
+      animation: slideUp 0.3s ease;
+    }
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .modal-header .title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      color: var(--lime);
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .modal-close {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--silver);
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .modal-close:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+    .modal-body {
+      padding: 24px;
+      overflow-y: auto;
+      color: var(--silver);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .modal-body h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-style: italic;
+      text-transform: uppercase;
+      color: var(--paper);
+      margin: 16px 0 8px;
+      letter-spacing: 0.02em;
+    }
+    .modal-body h4:first-child { margin-top: 0; }
+    .modal-body p { margin-bottom: 10px; }
+    .modal-body ul { margin: 8px 0 12px 20px; }
+    .modal-body li { margin-bottom: 6px; }
+    .modal-body strong { color: var(--paper); }
+    .modal-body .accent-lime { color: var(--lime); }
+    .modal-footer {
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+    }
+    .modal-footer button {
+      background: var(--lime);
+      color: var(--ink);
+      border: none;
+      padding: 10px 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+    .modal-footer button:hover { transform: translateY(-1px); }
+  </style>
+</head>
+<body>
+
+<main class="page">
+  <div class="card">
+
+    <div class="topbar">
+      <span class="left"><span class="dot"></span>BIB · 360°</span>
+      <span>AULA AO VIVO · GRATUITA</span>
+    </div>
+
+    <div class="content" id="form-state">
+
+      <p class="eyebrow">▸ Prof. Ms. Fabiano Peres apresenta</p>
+
+      <h1>
+        <span class="line silver-grad">Avaliação</span>
+        <span class="line lime">x</span>
+        <span class="line silver-grad small">Treino de Força</span>
+      </h1>
+
+      <div class="accent-bar"><span class="a"></span><span class="b"></span></div>
+
+      <p class="tagline">
+        Para <span class="hl">profissionais</span> que treinam corredores.
+      </p>
+
+      <div class="live-info">
+        <div>
+          <div class="label">▸ Aula ao vivo</div>
+          <div class="value">04 de maio · 21h</div>
+        </div>
+        <div style="text-align: right;">
+          <div class="label">▸ Onde</div>
+          <div class="value">YouTube</div>
+        </div>
+      </div>
+
+      <div class="pillars">
+        <div class="pillar lime">
+          <div class="square"></div>
+          <p>Força<br />Específica</p>
+        </div>
+        <div class="pillar orange">
+          <div class="square"></div>
+          <p>Objetivo<br />Claro</p>
+        </div>
+        <div class="pillar silver">
+          <div class="square"></div>
+          <p>Treinamento<br />Validado</p>
+        </div>
+      </div>
+
+      <form class="form" id="lead-form" novalidate>
+
+        <div class="field" data-field="nome">
+          <div class="field-head">
+            <label>Nome</label>
+            <span class="idx">/01</span>
+          </div>
+          <input type="text" name="nome" id="nome" placeholder="Como devemos te chamar" autocomplete="name" />
+          <p class="err">↳ Digite seu nome completo</p>
+        </div>
+
+        <div class="field" data-field="email">
+          <div class="field-head">
+            <label>E-mail profissional</label>
+            <span class="idx">/02</span>
+          </div>
+          <input type="email" name="email" id="email" placeholder="seu@email.com" autocomplete="email" />
+          <p class="err">↳ E-mail inválido</p>
+        </div>
+
+        <div class="field" data-field="whatsapp">
+          <div class="field-head">
+            <label>WhatsApp</label>
+            <span class="idx">/03</span>
+          </div>
+          <input type="tel" name="whatsapp" id="whatsapp" placeholder="(11) 91234-5678" autocomplete="tel" inputmode="numeric" />
+          <p class="err">↳ WhatsApp inválido (com DDD)</p>
+        </div>
+
+        <div class="field" data-field="area_atuacao">
+          <div class="field-head">
+            <label>Sua área de atuação</label>
+            <span class="idx">/04</span>
+          </div>
+          <div class="area-options">
+            <label class="area-option">
+              <input type="radio" name="area_atuacao" value="personal_trainer" />
+              <span class="area-label">Personal<br>Trainer</span>
+            </label>
+            <label class="area-option">
+              <input type="radio" name="area_atuacao" value="assessoria_esportiva" />
+              <span class="area-label">Assessoria<br>Esportiva</span>
+            </label>
+            <label class="area-option">
+              <input type="radio" name="area_atuacao" value="academico" />
+              <span class="area-label">Acadêmico<br>/ Estudante</span>
+            </label>
+            <label class="area-option">
+              <input type="radio" name="area_atuacao" value="outros" />
+              <span class="area-label">Outros</span>
+            </label>
+          </div>
+          <p class="err">↳ Selecione sua área</p>
+        </div>
+
+        <p class="global-error" id="global-error">⚠ Algo deu errado. Tente novamente em instantes.</p>
+
+        <button type="submit" class="submit" id="submit-btn">
+          Quero minha vaga ▸▸
+        </button>
+
+        <p class="lgpd">SEUS DADOS ESTÃO SEGUROS · <span class="lgpd-trigger" id="lgpd-trigger">LGPD</span></p>
+      </form>
+    </div>
+
+    <div class="success" id="success-state">
+      <div class="check">✓</div>
+      <p class="eyebrow" style="text-align:center; margin-bottom: 12px;">▸ Inscrição confirmada</p>
+      <h2>
+        Bem-vindo,<br />
+        <span class="name" id="primeiro-nome"></span>
+      </h2>
+      <p>
+        Em instantes você receberá um e-mail com todas as instruções da aula. Confira sua caixa de entrada e ative o sininho do canal no YouTube.
+      </p>
+
+      <div class="upsell">
+        <p class="upsell-eyebrow">▸ Enquanto você espera a aula</p>
+        <h3>Power Fast Runner</h3>
+        <p>Conheça a <strong style="color: var(--lime);">maior plataforma de treinamento de força para corredores</strong> desenvolvida ao longo de 35 anos de experiência teórica e prática em corrida de rua. Agora com conteúdo exclusivo para <strong style="color: var(--paper);">atletas corredores e treinadores</strong> que querem entregar resultado de verdade.</p>
+        <a href="https://www.powerfastrunner.com.br" class="upsell-btn">Conhecer a plataforma ▸</a>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <span class="seg-1"></span>
+      <span class="seg-2"></span>
+      <span class="seg-3"></span>
+    </div>
+
+  </div>
+</main>
+
+<!-- ========== MODAL LGPD ========== -->
+<div class="modal-overlay" id="lgpd-modal" role="dialog" aria-modal="true" aria-labelledby="lgpd-title">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="title" id="lgpd-title">▸ Política de Privacidade · LGPD</span>
+      <button class="modal-close" id="lgpd-close" aria-label="Fechar">✕</button>
+    </div>
+    <div class="modal-body">
+      <h4>Seus dados estão seguros</h4>
+      <p>Em conformidade com a <strong>Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018)</strong>, informamos como coletamos, usamos e protegemos seus dados ao se inscrever na aula gratuita do <strong class="accent-lime">Power Fast Runner</strong>.</p>
+
+      <h4>Quais dados coletamos</h4>
+      <ul>
+        <li><strong>Nome completo</strong> — para personalização da comunicação</li>
+        <li><strong>E-mail profissional</strong> — para envio do link da aula e materiais</li>
+        <li><strong>WhatsApp</strong> — para lembretes e suporte</li>
+        <li><strong>Área de atuação</strong> — para personalizar o conteúdo enviado</li>
+      </ul>
+
+      <h4>Como usamos seus dados</h4>
+      <p>Seus dados são utilizados exclusivamente para:</p>
+      <ul>
+        <li>Envio do acesso à aula ao vivo gratuita</li>
+        <li>Comunicação de novas aulas e conteúdos do Power Fast Runner</li>
+        <li>Análise estatística agregada e anônima</li>
+      </ul>
+
+      <h4>Seus direitos</h4>
+      <p>Você pode, a qualquer momento:</p>
+      <ul>
+        <li><strong>Acessar</strong> seus dados armazenados</li>
+        <li><strong>Corrigir</strong> dados incorretos ou desatualizados</li>
+        <li><strong>Excluir</strong> seus dados de nossos sistemas</li>
+        <li><strong>Cancelar</strong> o recebimento de comunicações</li>
+      </ul>
+
+      <h4>Segurança e compartilhamento</h4>
+      <p>Seus dados <strong>não são vendidos</strong> nem compartilhados com terceiros para fins comerciais. São armazenados em servidores seguros com criptografia.</p>
+
+      <h4>Contato</h4>
+      <p>Para exercer seus direitos ou tirar dúvidas sobre o tratamento de seus dados, entre em contato:</p>
+      <p><strong>powerfastrunner@gmail.com</strong><br>
+      <strong>Prof. Ms. Fabiano Peres</strong><br>
+      CNPJ: 45.094.301/0001-60</p>
+    </div>
+    <div class="modal-footer">
+      <button id="lgpd-accept">Entendi</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ============================================================
+  // ✅ URL DE PRODUÇÃO
+  // ============================================================
+  const WEBHOOK_URL = "https://n8n.willfixitsolutions.cloud/webhook/corrida-360";
+
+  // ============================================================
+  // MODAL LGPD
+  // ============================================================
+  const lgpdModal = document.getElementById("lgpd-modal");
+  const lgpdTrigger = document.getElementById("lgpd-trigger");
+  const lgpdClose = document.getElementById("lgpd-close");
+  const lgpdAccept = document.getElementById("lgpd-accept");
+
+  function openLgpdModal() {
+    lgpdModal.classList.add("show");
+    document.body.style.overflow = "hidden";
+  }
+  function closeLgpdModal() {
+    lgpdModal.classList.remove("show");
+    document.body.style.overflow = "";
+  }
+
+  lgpdTrigger.addEventListener("click", openLgpdModal);
+  lgpdClose.addEventListener("click", closeLgpdModal);
+  lgpdAccept.addEventListener("click", closeLgpdModal);
+  lgpdModal.addEventListener("click", (e) => {
+    if (e.target === lgpdModal) closeLgpdModal();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lgpdModal.classList.contains("show")) {
+      closeLgpdModal();
+    }
+  });
+
+  // ============================================================
+  // MÁSCARA E VALIDAÇÃO
+  // ============================================================
+  function maskPhone(value) {
+    const d = value.replace(/\D/g, "").slice(0, 11);
+    if (d.length <= 2) return d;
+    if (d.length <= 7) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
+    if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
+    return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+  }
+
+  const phoneInput = document.getElementById("whatsapp");
+  phoneInput.addEventListener("input", (e) => {
+    e.target.value = maskPhone(e.target.value);
+  });
+
+  function setError(fieldName, hasError) {
+    const el = document.querySelector(`[data-field="${fieldName}"]`);
+    if (hasError) el.classList.add("has-error");
+    else el.classList.remove("has-error");
+  }
+
+  function validate(data) {
+    let ok = true;
+    if (data.nome.trim().length < 2) { setError("nome", true); ok = false; } else setError("nome", false);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) { setError("email", true); ok = false; } else setError("email", false);
+    const phoneDigits = data.whatsapp.replace(/\D/g, "");
+    if (phoneDigits.length < 10 || phoneDigits.length > 11) { setError("whatsapp", true); ok = false; } else setError("whatsapp", false);
+    if (!data.area_atuacao) { setError("area_atuacao", true); ok = false; } else setError("area_atuacao", false);
+    return ok;
+  }
+
+  document.getElementById("lead-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const areaSelected = document.querySelector('input[name="area_atuacao"]:checked');
+
+    const data = {
+      nome: document.getElementById("nome").value,
+      email: document.getElementById("email").value,
+      whatsapp: document.getElementById("whatsapp").value,
+      area_atuacao: areaSelected ? areaSelected.value : "",
+    };
+
+    if (!validate(data)) return;
+
+    const btn = document.getElementById("submit-btn");
+    const globalErr = document.getElementById("global-error");
+    btn.disabled = true;
+    btn.textContent = "Enviando...";
+    globalErr.classList.remove("show");
+
+    try {
+      // mode: 'no-cors' resolve o erro CORS sem precisar configurar nada no servidor
+      await fetch(WEBHOOK_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...data,
+          whatsapp_digits: data.whatsapp.replace(/\D/g, ""),
+          curso: "Aula Gratuita - Avaliação x Treino de Força",
+          origem: window.location.href,
+          enviado_em: new Date().toISOString(),
+          referrer: document.referrer || null,
+          utm_source: new URLSearchParams(window.location.search).get("utm_source"),
+          utm_medium: new URLSearchParams(window.location.search).get("utm_medium"),
+          utm_campaign: new URLSearchParams(window.location.search).get("utm_campaign"),
+        }),
+      });
+
+      document.getElementById("primeiro-nome").textContent =
+        data.nome.trim().split(" ")[0] || "";
+      document.getElementById("form-state").style.display = "none";
+      document.getElementById("success-state").classList.add("show");
+
+      document.querySelector(".card").scrollIntoView({ behavior: "smooth", block: "start" });
+
+      if (typeof fbq !== "undefined") fbq("track", "Lead");
+      if (typeof gtag !== "undefined") gtag("event", "generate_lead");
+
+    } catch (err) {
+      console.error(err);
+      btn.disabled = false;
+      btn.textContent = "Quero minha vaga ▸▸";
+      globalErr.classList.add("show");
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+# robots.txt for https://www.powerfastrunner.com.br/
+
+User-agent: *
+Allow: /
+Disallow: /server/
+Disallow: /.env
+Disallow: /.env.example
+Disallow: /.git/
+Disallow: /docs/
+
+# AI crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.powerfastrunner.com.br/sitemap.xml
+
+# Host directive
+Host: https://www.powerfastrunner.com.br
