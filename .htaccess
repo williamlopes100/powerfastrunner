@@ -22,12 +22,15 @@ ErrorDocument 404 /404.html
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
-    # Force HTTPS
+    # Force HTTPS (works behind reverse proxies; skipped on Render preview hosts)
     RewriteCond %{HTTPS} off
+    RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+    RewriteCond %{HTTP_HOST} !\.onrender\.com$ [NC]
     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-    # Force www
+    # Force www (skipped on Render preview hosts where www.* is not routed)
     RewriteCond %{HTTP_HOST} !^www\. [NC]
+    RewriteCond %{HTTP_HOST} !\.onrender\.com$ [NC]
     RewriteRule ^(.*)$ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
     # Remove trailing .html from URLs
