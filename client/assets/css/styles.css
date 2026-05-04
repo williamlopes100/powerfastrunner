@@ -39,6 +39,19 @@ nav .w{display:flex;align-items:center;justify-content:space-between}
 .hd{font-size:1.05rem;color:var(--t2);line-height:1.75;margin-bottom:32px;max-width:620px;margin-left:auto;margin-right:auto}.hd strong{color:var(--t)}
 .hs{margin-top:14px;font-size:.82rem;color:var(--t3)}.hs strong{color:var(--t2)}
 .tr{display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:32px}.tr span{font-size:.8rem;color:var(--t2);font-weight:600}
+.hvid{max-width:680px;width:100%;margin:0 auto 32px}
+.hvid-frame{position:relative;aspect-ratio:16/9;border-radius:18px;overflow:hidden;border:1px solid var(--ab);background:linear-gradient(180deg,#1a1a1a,#0d0d0d);box-shadow:0 24px 60px rgba(0,0,0,.55),0 0 0 1px var(--g)}
+.hvid-frame iframe,.hvid-frame video{position:absolute;inset:0;width:100%;height:100%;border:none;display:block}
+.hvid-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;cursor:pointer;outline:none;overflow:hidden}
+.hvid-placeholder::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.3) 0%,rgba(10,10,10,.55) 60%,rgba(10,10,10,.85) 100%),radial-gradient(circle at center,rgba(255,107,26,.18),transparent 65%);z-index:1}
+.hvid-placeholder>*:not(.hvid-poster){position:relative;z-index:2}
+.hvid-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;z-index:0}
+.hvid-placeholder:focus-visible{box-shadow:inset 0 0 0 2px var(--a)}
+.hvid-play{width:80px;height:80px;border-radius:50%;background:var(--a);color:#fff;font-size:1.5rem;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 40px rgba(255,107,26,.5);transition:transform .25s,background .25s}
+.hvid-play i{margin-left:5px}
+.hvid-placeholder:hover .hvid-play{transform:scale(1.08);background:var(--a2)}
+.hvid-label{font-size:.88rem;color:var(--t);font-weight:700;text-transform:uppercase;letter-spacing:.08em;text-align:center;padding:0 16px}
+.hvid-sub{font-size:.72rem;color:var(--t3);font-weight:600;letter-spacing:.04em}
 .sp{padding:40px 0;border-bottom:1px solid var(--b)}
 .spr{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
 .spi{text-align:center}.spi .n{font-size:1.8rem;font-weight:800;color:var(--a)}.spi .l{font-size:.72rem;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-top:2px}
