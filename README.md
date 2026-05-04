@@ -44,11 +44,11 @@ Stack: Node.js + Express servindo um front-end estático.
 
 ```bash
 npm install
-npm start            # node server/index.js → http://localhost:3000
+npm start            # carrega .env e roda node server/index.js
 npm run dev          # node --watch (auto-reload em mudanças)
 ```
 
-A porta vem de `PORT` (default 3000).
+A porta vem exclusivamente de `PORT` no `.env` (sem default — o servidor falha rápido se não estiver setado).
 
 ---
 
