@@ -4,7 +4,11 @@ const express = require('express');
 const compression = require('compression');
 
 const app = express();
-const PORT = Number(process.env.PORT) || 3000;
+const PORT = Number(process.env.PORT);
+if (!Number.isInteger(PORT) || PORT <= 0) {
+  console.error('PORT environment variable is required (set it in .env)');
+  process.exit(1);
+}
 const PUBLIC_DIR = path.join(__dirname, '..', 'client');
 
 app.set('trust proxy', true);
