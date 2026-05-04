@@ -1,0 +1,39 @@
+name: Deploy powerfastrunner Website to VPS
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'README.md'
+      - '.env.example'
+      - '.gitignore'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.POWERFASTRUNNER_SSH_KEY }}
+          script: |
+            set -e
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+            nvm use 20
+
+            cd /home/aarav-dev/bestfriend/powerfastrunner
+
+            git fetch origin
+            git reset --hard origin/main
+
+            npm ci --omit=dev
+
+            pm2 reload powerfastrunner || pm2 start npm --name powerfastrunner -- start
+            pm2 save
+
+            sleep 2
+            curl -fsS -o /dev/null http://localhost:5014/ \
+              || (pm2 logs powerfastrunner --lines 30 --nostream && exit 1)
