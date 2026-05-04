@@ -1,0 +1,18 @@
+{
+  "name": "powerfastrunner",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Power Fast Runner landing page (Express)",
+  "main": "server/index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "dependencies": {
+    "compression": "^1.8.1",
+    "express": "^5.2.1"
+  }
+}
